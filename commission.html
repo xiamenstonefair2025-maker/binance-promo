@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>返佣说明 - 币安推广官方合作</title>
+    <meta name="description" content="币安返佣计划详细说明，最高40%返佣">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        binance: {
+                            yellow: '#FCD535',
+                            dark: '#0B0E11',
+                            darker: '#151A21',
+                            gray: '#1E2329',
+                            light: '#848E9C',
+                            white: '#EAECEF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0B0E11 0%, #151A21 50%, #0B0E11 100%);
+            min-height: 100vh;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FCD535 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+            background: #FCD535; transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+    </style>
+</head>
+<body class="text-binance-white">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-binance-dark/90 backdrop-blur-md border-b border-binance-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-binance-yellow rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-binance-dark" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-white">币安推广</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-binance-light font-medium hover:text-binance-yellow">首页</a>
+                    <a href="news.html" class="nav-link text-binance-light font-medium hover:text-binance-yellow">新闻中心</a>
+                    <a href="activities.html" class="nav-link text-binance-light font-medium hover:text-binance-yellow">活动动态</a>
+                    <a href="commission.html" class="nav-link text-white font-medium hover:text-binance-yellow">返佣说明</a>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#" id="nav-register-btn" class="bg-binance-yellow text-binance-dark px-6 py-2 rounded-lg font-semibold hover:bg-yellow-400">立即注册</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">返佣说明</span></h1>
+                <p class="text-binance-light">了解币安返佣计划，最大化您的收益</p>
+            </div>
+
+            <div class="space-y-8">
+                <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6">
+                    <h2 class="text-xl font-bold mb-4 text-binance-yellow">返佣比例</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="text-center p-4 bg-binance-gray/30 rounded-xl">
+                            <div class="text-3xl font-bold text-binance-yellow">40%</div>
+                            <div class="text-sm text-binance-light mt-1">现货交易返佣</div>
+                        </div>
+                        <div class="text-center p-4 bg-binance-gray/30 rounded-xl">
+                            <div class="text-3xl font-bold text-binance-yellow">30%</div>
+                            <div class="text-sm text-binance-light mt-1">合约交易返佣</div>
+                        </div>
+                        <div class="text-center p-4 bg-binance-gray/30 rounded-xl">
+                            <div class="text-3xl font-bold text-binance-yellow">20%</div>
+                            <div class="text-sm text-binance-light mt-1">理财收益返佣</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6">
+                    <h2 class="text-xl font-bold mb-4 text-binance-yellow">如何获得返佣</h2>
+                    <ol class="space-y-4 text-binance-light">
+                        <li class="flex items-start">
+                            <span class="w-6 h-6 bg-binance-yellow text-binance-dark rounded-full flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">1</span>
+                            <span>通过我们的专属推广链接注册币安账户</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-6 h-6 bg-binance-yellow text-binance-dark rounded-full flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">2</span>
+                            <span>完成身份认证（KYC）</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-6 h-6 bg-binance-yellow text-binance-dark rounded-full flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">3</span>
+                            <span>开始交易，返佣将自动计算并发放到您的账户</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6">
+                    <h2 class="text-xl font-bold mb-4 text-binance-yellow">常见问题</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-semibold text-white mb-2">返佣什么时候到账？</h3>
+                            <p class="text-binance-light text-sm">返佣实时计算，通常在交易完成后1小时内到账。</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-white mb-2">返佣有上限吗？</h3>
+                            <p class="text-binance-light text-sm">没有上限！交易越多，返佣越多。</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-white mb-2">可以修改推荐人吗？</h3>
+                            <p class="text-binance-light text-sm">注册后180天内可以修改一次推荐人。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#" id="commission-register-btn" class="inline-block bg-binance-yellow text-binance-dark px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-400">
+                    立即注册获取返佣
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-binance-dark border-t border-binance-gray py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-binance-light">
+            <p>&copy; 2024 币安推广合作伙伴. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

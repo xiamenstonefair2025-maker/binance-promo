@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动动态 - 币安推广官方合作</title>
+    <meta name="description" content="币安最新活动、优惠动态">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        binance: {
+                            yellow: '#FCD535',
+                            dark: '#0B0E11',
+                            darker: '#151A21',
+                            gray: '#1E2329',
+                            light: '#848E9C',
+                            white: '#EAECEF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0B0E11 0%, #151A21 50%, #0B0E11 100%);
+            min-height: 100vh;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FCD535 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+            background: #FCD535; transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+    </style>
+</head>
+<body class="text-binance-white">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-binance-dark/90 backdrop-blur-md border-b border-binance-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-binance-yellow rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-binance-dark" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-white">币安推广</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-binance-light font-medium hover:text-binance-yellow">首页</a>
+                    <a href="news.html" class="nav-link text-binance-light font-medium hover:text-binance-yellow">新闻中心</a>
+                    <a href="activities.html" class="nav-link text-white font-medium hover:text-binance-yellow">活动动态</a>
+                    <a href="commission.html" class="nav-link text-binance-light font-medium hover:text-binance-yellow">返佣说明</a>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#" id="nav-register-btn" class="bg-binance-yellow text-binance-dark px-6 py-2 rounded-lg font-semibold hover:bg-yellow-400">立即注册</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">活动动态</span></h1>
+                <p class="text-binance-light">币安最新优惠活动，限时福利等你来拿</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6 hover:border-binance-yellow transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">进行中</span>
+                        <span class="text-binance-light text-sm">2024.03.01 - 2024.03.31</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">新用户专属福利</h3>
+                    <p class="text-binance-light mb-4">注册并完成首次交易，即可获得价值100 USDT的欢迎礼包</p>
+                    <a href="#" class="text-binance-yellow hover:text-yellow-400 font-medium">了解详情 →</a>
+                </div>
+
+                <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6 hover:border-binance-yellow transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">进行中</span>
+                        <span class="text-binance-light text-sm">长期有效</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">交易手续费折扣</h3>
+                    <p class="text-binance-light mb-4">使用BNB支付交易手续费，享受最高25%折扣</p>
+                    <a href="#" class="text-binance-yellow hover:text-yellow-400 font-medium">了解详情 →</a>
+                </div>
+
+                <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6 hover:border-binance-yellow transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm">即将开始</span>
+                        <span class="text-binance-light text-sm">2024.04.01 - 2024.04.30</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">合约交易大赛</h3>
+                    <p class="text-binance-light mb-4">参与合约交易，瓜分100万USDT奖池</p>
+                    <a href="#" class="text-binance-yellow hover:text-yellow-400 font-medium">了解详情 →</a>
+                </div>
+
+                <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6 hover:border-binance-yellow transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">进行中</span>
+                        <span class="text-binance-light text-sm">长期有效</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">邀请好友奖励</h3>
+                    <p class="text-binance-light mb-4">邀请好友注册并交易，双方均可获得奖励</p>
+                    <a href="#" class="text-binance-yellow hover:text-yellow-400 font-medium">了解详情 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-binance-dark border-t border-binance-gray py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-binance-light">
+            <p>&copy; 2024 币安推广合作伙伴. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
