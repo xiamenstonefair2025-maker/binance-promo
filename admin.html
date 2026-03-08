@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站管理后台 - 币安推广</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        binance: {
+                            yellow: '#FCD535',
+                            dark: '#0B0E11',
+                            darker: '#151A21',
+                            gray: '#1E2329',
+                            light: '#848E9C',
+                            white: '#EAECEF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0B0E11 0%, #151A21 50%, #0B0E11 100%);
+            min-height: 100vh;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FCD535 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-binance-white">
+    <!-- 登录界面 -->
+    <div id="login-section" class="min-h-screen flex items-center justify-center px-4">
+        <div class="bg-binance-darker border border-binance-gray rounded-2xl p-8 w-full max-w-md">
+            <div class="text-center mb-8">
+                <h1 class="text-2xl font-bold mb-2">管理后台</h1>
+                <p class="text-binance-light text-sm">币安推广网站配置</p>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">管理密码</label>
+                    <input type="password" id="admin-password" class="w-full bg-binance-gray border border-binance-gray rounded-lg px-4 py-3 text-white focus:border-binance-yellow focus:outline-none" placeholder="请输入密码">
+                </div>
+                <button onclick="login()" class="w-full bg-binance-yellow text-binance-dark font-bold py-3 rounded-lg hover:bg-yellow-400 transition-all">
+                    登录
+                </button>
+                <p class="text-xs text-binance-light text-center">默认密码: admin123</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 管理界面 -->
+    <div id="admin-section" class="hidden min-h-screen">
+        <!-- 顶部导航 -->
+        <nav class="bg-binance-dark/90 backdrop-blur-md border-b border-binance-gray">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xl font-bold">管理后台</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a href="index.html" target="_blank" class="text-binance-light hover:text-binance-yellow text-sm">查看网站 →</a>
+                        <button onclick="logout()" class="text-sm text-binance-light hover:text-white">退出</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- 左侧：配置管理 -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- 链接配置 -->
+                    <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6">
+                        <h2 class="text-xl font-bold mb-6 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-binance-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                            </svg>
+                            推广链接配置
+                        </h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">币安注册链接</label>
+                                <input type="url" id="binance-url" class="w-full bg-binance-gray border border-binance-gray rounded-lg px-4 py-3 text-white focus:border-binance-yellow focus:outline-none" placeholder="https://www.binance.com/...">
+                                <p class="text-xs text-binance-light mt-1">用户点击"立即注册"按钮将跳转到此链接</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Telegram 社群链接</label>
+                                <input type="url" id="telegram-url" class="w-full bg-binance-gray border border-binance-gray rounded-lg px-4 py-3 text-white focus:border-binance-yellow focus:outline-none" placeholder="https://t.me/...">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Twitter/X 链接（可选）</label>
+                                <input type="url" id="twitter-url" class="w-full bg-binance-gray border border-binance-gray rounded-lg px-4 py-3 text-white focus:border-binance-yellow focus:outline-none" placeholder="https://twitter.com/...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEO 配置 -->
+                    <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6">
+                        <h2 class="text-xl font-bold mb-6 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-binance-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            SEO 优化配置
+                        </h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">网站标题</label>
+                                <input type="text" id="site-title" class="w-full bg-binance-gray border border-binance-gray rounded-lg px-4 py-3 text-white focus:border-binance-yellow focus:outline-none" placeholder="币安推广官方合作 - 最高40%返佣">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">网站描述</label>
+                                <textarea id="site-description" rows="3" class="w-full bg-binance-gray border border-binance-gray rounded-lg px-4 py-3 text-white focus:border-binance-yellow focus:outline-none" placeholder="币安官方推广合作伙伴，注册即享最高40%交易返佣..."></textarea>
+                                <p class="text-xs text-binance-light mt-1">显示在搜索引擎结果中，建议 150 字以内</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">关键词（用逗号分隔）</label>
+                                <input type="text" id="site-keywords" class="w-full bg-binance-gray border border-binance-gray rounded-lg px-4 py-3 text-white focus:border-binance-yellow focus:outline-none" placeholder="币安,返佣,加密货币,比特币,交易">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 页面内容配置 -->
+                    <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6">
+                        <h2 class="text-xl font-bold mb-6 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-binance-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                            </svg>
+                            页面内容
+                        </h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">主标题</label>
+                                <input type="text" id="main-title" class="w-full bg-binance-gray border border-binance-gray rounded-lg px-4 py-3 text-white focus:border-binance-yellow focus:outline-none" placeholder="币安推广官方合作">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">副标题</label>
+                                <input type="text" id="sub-title" class="w-full bg-binance-gray border border-binance-gray rounded-lg px-4 py-3 text-white focus:border-binance-yellow focus:outline-none" placeholder="注册即享最高40%返佣">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">返佣比例</label>
+                                <input type="text" id="commission-rate" class="w-full bg-binance-gray border border-binance-gray rounded-lg px-4 py-3 text-white focus:border-binance-yellow focus:outline-none" placeholder="40%">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-4">
+                        <button onclick="saveConfig()" class="flex-1 bg-binance-yellow text-binance-dark font-bold py-3 rounded-lg hover:bg-yellow-400 transition-all">
+                            保存配置
+                        </button>
+                        <button onclick="exportConfig()" class="px-6 bg-binance-gray border border-binance-gray text-white font-medium py-3 rounded-lg hover:border-binance-yellow transition-all">
+                            导出配置
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 右侧：预览和统计 -->
+                <div class="space-y-6">
+                    <!-- 快速预览 -->
+                    <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6">
+                        <h3 class="font-bold mb-4">快速预览</h3>
+                        <div class="space-y-3">
+                            <a href="index.html" target="_blank" class="block w-full bg-binance-gray hover:bg-binance-gray/80 text-white text-center py-3 rounded-lg transition-all">
+                                查看首页
+                            </a>
+                            <a href="news.html" target="_blank" class="block w-full bg-binance-gray hover:bg-binance-gray/80 text-white text-center py-3 rounded-lg transition-all">
+                                查看新闻页
+                            </a>
+                            <a href="commission.html" target="_blank" class="block w-full bg-binance-gray hover:bg-binance-gray/80 text-white text-center py-3 rounded-lg transition-all">
+                                查看返佣页
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SEO 检测 -->
+                    <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6">
+                        <h3 class="font-bold mb-4">SEO 检测</h3>
+                        <div id="seo-checks" class="space-y-3 text-sm">
+                            <div class="flex items-center justify-between">
+                                <span class="text-binance-light">标题长度</span>
+                                <span id="check-title" class="text-yellow-500">检测中...</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-binance-light">描述长度</span>
+                                <span id="check-desc" class="text-yellow-500">检测中...</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-binance-light">关键词</span>
+                                <span id="check-keywords" class="text-yellow-500">检测中...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 使用说明 -->
+                    <div class="bg-binance-darker border border-binance-gray rounded-2xl p-6">
+                        <h3 class="font-bold mb-4">使用说明</h3>
+                        <ol class="space-y-2 text-sm text-binance-light list-decimal list-inside">
+                            <li>修改配置后点击"保存配置"</li>
+                            <li>配置会自动保存到浏览器</li>
+                            <li>点击"导出配置"下载配置文件</li>
+                            <li>将配置文件发送给开发者更新网站</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示消息 -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-binance-yellow text-binance-dark px-6 py-3 rounded-lg font-medium transform translate-y-20 opacity-0 transition-all duration-300">
+        保存成功！
+    </div>
+
+    <script>
+        // 默认配置
+        const DEFAULT_CONFIG = {
+            binanceUrl: 'https://www.bsmkweb.cc/join?ref=VIPBN',
+            telegramUrl: 'https://t.me/CXWeb3',
+            twitterUrl: '',
+            siteTitle: '币安推广官方合作 - 最高40%返佣',
+            siteDescription: '币安官方推广合作伙伴，注册即享最高40%交易返佣，24/7专业支持',
+            siteKeywords: '币安,返佣,加密货币,比特币,以太坊,交易,Binance',
+            mainTitle: '币安推广官方合作',
+            subTitle: '注册即享最高40%返佣',
+            commissionRate: '40%'
+        };
+
+        // 从 localStorage 加载配置
+        function loadConfig() {
+            const saved = localStorage.getItem('binance_promo_config');
+            const config = saved ? JSON.parse(saved) : DEFAULT_CONFIG;
+            
+            document.getElementById('binance-url').value = config.binanceUrl || '';
+            document.getElementById('telegram-url').value = config.telegramUrl || '';
+            document.getElementById('twitter-url').value = config.twitterUrl || '';
+            document.getElementById('site-title').value = config.siteTitle || '';
+            document.getElementById('site-description').value = config.siteDescription || '';
+            document.getElementById('site-keywords').value = config.siteKeywords || '';
+            document.getElementById('main-title').value = config.mainTitle || '';
+            document.getElementById('sub-title').value = config.subTitle || '';
+            document.getElementById('commission-rate').value = config.commissionRate || '';
+            
+            checkSEO();
+        }
+
+        // 保存配置
+        function saveConfig() {
+            const config = {
+                binanceUrl: document.getElementById('binance-url').value,
+                telegramUrl: document.getElementById('telegram-url').value,
+                twitterUrl: document.getElementById('twitter-url').value,
+                siteTitle: document.getElementById('site-title').value,
+                siteDescription: document.getElementById('site-description').value,
+                siteKeywords: document.getElementById('site-keywords').value,
+                mainTitle: document.getElementById('main-title').value,
+                subTitle: document.getElementById('sub-title').value,
+                commissionRate: document.getElementById('commission-rate').value
+            };
+            
+            localStorage.setItem('binance_promo_config', JSON.stringify(config));
+            showToast('保存成功！');
+            checkSEO();
+        }
+
+        // 导出配置
+        function exportConfig() {
+            const config = localStorage.getItem('binance_promo_config') || JSON.stringify(DEFAULT_CONFIG);
+            const blob = new Blob([config], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'binance-promo-config.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('配置已导出！');
+        }
+
+        // SEO 检测
+        function checkSEO() {
+            const title = document.getElementById('site-title').value;
+            const desc = document.getElementById('site-description').value;
+            const keywords = document.getElementById('site-keywords').value;
+            
+            // 标题检测 (30-60字符为佳)
+            const titleEl = document.getElementById('check-title');
+            if (title.length >= 30 && title.length <= 60) {
+                titleEl.textContent = '✓ 良好';
+                titleEl.className = 'text-green-500';
+            } else if (title.length > 0) {
+                titleEl.textContent = '⚠ 建议30-60字';
+                titleEl.className = 'text-yellow-500';
+            } else {
+                titleEl.textContent = '✗ 未设置';
+                titleEl.className = 'text-red-500';
+            }
+            
+            // 描述检测 (120-160字符为佳)
+            const descEl = document.getElementById('check-desc');
+            if (desc.length >= 120 && desc.length <= 160) {
+                descEl.textContent = '✓ 良好';
+                descEl.className = 'text-green-500';
+            } else if (desc.length > 0) {
+                descEl.textContent = '⚠ 建议120-160字';
+                descEl.className = 'text-yellow-500';
+            } else {
+                descEl.textContent = '✗ 未设置';
+                descEl.className = 'text-red-500';
+            }
+            
+            // 关键词检测
+            const kwEl = document.getElementById('check-keywords');
+            if (keywords.split(',').length >= 3) {
+                kwEl.textContent = '✓ 已设置';
+                kwEl.className = 'text-green-500';
+            } else if (keywords.length > 0) {
+                kwEl.textContent = '⚠ 建议3个以上';
+                kwEl.className = 'text-yellow-500';
+            } else {
+                kwEl.textContent = '✗ 未设置';
+                kwEl.className = 'text-red-500';
+            }
+        }
+
+        // 显示提示
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // 登录
+        function login() {
+            const password = document.getElementById('admin-password').value;
+            if (password === 'admin123') {
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('admin-section').classList.remove('hidden');
+                loadConfig();
+            } else {
+                alert('密码错误！');
+            }
+        }
+
+        // 退出
+        function logout() {
+            document.getElementById('login-section').classList.remove('hidden');
+            document.getElementById('admin-section').classList.add('hidden');
+            document.getElementById('admin-password').value = '';
+        }
+
+        // 监听输入变化
+        document.querySelectorAll('input, textarea').forEach(el => {
+            el.addEventListener('input', checkSEO);
+        });
+
+        // 回车登录
+        document.getElementById('admin-password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') login();
+        });
+    </script>
+</body>
+</html>
